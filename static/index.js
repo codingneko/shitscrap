@@ -109,6 +109,10 @@ async function fetchLinks() {
         } else {
             failCount++;
         }
+
+        failCounter.innerText = failCount;
+        successCounter.innerText = amount - counter;
+        delay(300);
     }
 }
 
