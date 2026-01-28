@@ -1,0 +1,28 @@
+.text-item {
+    border: red 2px solid;
+    max-height: 10rem;
+    overflow: scroll;
+}
+
+.image-item {
+    padding: 1rem;
+    margin: 10px;
+    max-width: 300px;
+    height: 300px;
+    object-fit: contain;
+    position: relative;
+    background-color: #DDD;
+    border: 2px solid green;
+}
+
+.website-item {
+    
+}
+
+.red {
+    color: red;
+}
+
+.green {
+    color: green;
+}
