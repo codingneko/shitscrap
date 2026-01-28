@@ -30,7 +30,7 @@ async function search() {
             await fetchText();
             break;
         case "html":
-            await fetchHtml();
+            await fetchLinks();
             break;
         case "image":
             await fetchImage();
@@ -94,7 +94,7 @@ async function fetchImage() {
     }
 }
 
-async function fetchHtml() {
+async function fetchLinks() {
     let counter = amount;
 
     while (counter > 0 && searching) {
@@ -144,12 +144,11 @@ async function checkWebsiteResponds(url) {
     try {
         let req = await fetch(`/check/${encodeURIComponent(url)}`);
         let response = await req.json();
+        return response.status < 400;
     } catch (error) {
         console.log(error);
         return false;
     }
-
-    return response.status < 400;
 }
 
 
