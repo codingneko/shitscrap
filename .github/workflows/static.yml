@@ -1,0 +1,35 @@
+name: Deploy this thing to the server
+
+on:
+  push:
+    branches: ["master"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Execute remote SSH commands using password
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          password: ${{ secrets.PASSWORD }}
+          port: ${{ secrets.PORT }}
+          script: cd ~ && 
+            git clone ${{github.repositoryUrl}} && 
+            foo=${{github.repository}} && 
+            cd ${foo##*/} && 
+            docker compose build && 
+            docker compose down && 
+            docker compose up  
