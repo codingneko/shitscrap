@@ -40,5 +40,5 @@ app.get('/:baseurl/:id', async (req, res) => {
 });
 
 app.listen(port, () => {
-    console.log(`Randpaste is listening on port ${port}`);
+    console.log(`Shitscrap is listening on port ${port}`);
 })
