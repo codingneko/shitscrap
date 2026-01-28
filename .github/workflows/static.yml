@@ -25,10 +25,11 @@ jobs:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.SSH_KEY }}
-          script: cd ~ && 
-            git clone ${{github.repositoryUrl}} && 
-            foo=${{github.repository}} && 
-            cd ${foo##*/} && 
-            docker compose build && 
-            docker compose down && 
-            docker compose up  
+          script: |
+            cd ~
+            git clone ${{github.repositoryUrl}}
+            foo=${{github.repository}}
+            cd ${foo##*/}
+            docker compose build
+            docker compose down
+            docker compose up
