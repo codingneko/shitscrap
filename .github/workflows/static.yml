@@ -27,9 +27,10 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           script: |
             cd ~
-            git clone ${{github.repositoryUrl}}
             foo=${{github.repository}}
             cd ${foo##*/}
+            git checkout master
+            git pull
             docker compose build
             docker compose down
             docker compose up
