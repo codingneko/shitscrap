@@ -24,6 +24,7 @@ async function search() {
     searching = true;
     updateFields();
     failCount = 0;
+    container.innerHTML = '';
 
     switch (type) {
         case "text":
