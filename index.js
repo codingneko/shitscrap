@@ -8,13 +8,21 @@ let backoffDate = new Date();
 app.use('/', express.static('static'));
 
 app.get('/check/:url', async (req, res) => {
-    const response = await fetch(req.params.url);
+    try {
+        const response = await fetch(req.params.url);
 
-    const result = {
-        status: response.status
+        const result = {
+            status: response.status
+        }
+
+        res.status(200).type("application/json").send(result);
+    } catch(error) {
+        res.status(500).type("application/json").send({
+            status: error
+        });
+        console.log(`Fetch failed: ${error}`);
     }
-
-    res.status(200).type("application/json").send(result);
+    
 });
 
 app.get('/:baseurl/:id', async (req, res) => {

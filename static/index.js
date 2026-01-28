@@ -141,8 +141,13 @@ function checkImageExists(url) {
 }
 
 async function checkWebsiteResponds(url) {
-    let req = await fetch(`/check/${encodeURIComponent(url)}`);
-    let response = await req.json();
+    try {
+        let req = await fetch(`/check/${encodeURIComponent(url)}`);
+        let response = await req.json();
+    } catch (error) {
+        console.log(error);
+        return false;
+    }
 
     return response.status < 400;
 }
