@@ -32,7 +32,7 @@ app.get('/:baseurl/:id', async (req, res) => {
         if (response.status == 429) {
             backoffDate = new Date();
             backoffDate.setTime(backoffDate.getTime() + 60*1000);
-            res.status(response.status).type("text/plain").send('pastebin needs a break');
+            res.status(response.status).type("text/plain").send('website needs a break');
         }
 
         if (!response.ok) {
@@ -43,7 +43,7 @@ app.get('/:baseurl/:id', async (req, res) => {
             res.type(response.type).send(await response.text());
         }
     } else {
-        res.status(429).type("text/plain").send('pastebin needs a break');
+        res.status(429).type("text/plain").send('website needs a break');
     }
 });
 

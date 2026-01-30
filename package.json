@@ -1,7 +1,7 @@
 {
   "name": "shitscrap",
   "version": "1.0.0",
-  "description": "Gets random pastes from pastebin",
+  "description": "Gets random shit from websites",
   "repository": "https://github.com/codingneko/shitscrap",
   "main": "index.js",
   "scripts": {
